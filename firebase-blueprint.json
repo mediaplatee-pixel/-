@@ -1,0 +1,56 @@
+{
+  "entities": {
+    "Project": {
+      "title": "Project",
+      "description": "A video production project in the portfolio",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "Title of the project" },
+        "description": { "type": "string", "description": "Detailed description" },
+        "category": { "type": "string", "enum": ["Educational", "YouTube", "Corporate", "Other"] },
+        "thumbnailUrl": { "type": "string", "format": "uri" },
+        "videoUrl": { "type": "string", "format": "uri" },
+        "createdAt": { "type": "number" }
+      },
+      "required": ["title", "category", "thumbnailUrl", "createdAt"]
+    },
+    "SiteSettings": {
+      "title": "SiteSettings",
+      "description": "Global site configuration",
+      "type": "object",
+      "properties": {
+        "companyName": { "type": "string" },
+        "primaryColor": { "type": "string" },
+        "secondaryColor": { "type": "string" },
+        "contactEmail": { "type": "string", "format": "email" },
+        "youtubeUrl": { "type": "string", "format": "uri" },
+        "instagramUrl": { "type": "string", "format": "uri" },
+        "linkedinUrl": { "type": "string", "format": "uri" }
+      }
+    },
+    "User": {
+      "title": "User",
+      "description": "Admin user profile",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "format": "email" },
+        "role": { "type": "string", "enum": ["admin", "editor"] }
+      },
+      "required": ["email", "role"]
+    }
+  },
+  "firestore": {
+    "/projects/{projectId}": {
+      "schema": "Project",
+      "description": "Collection of portfolio projects"
+    },
+    "/settings/global": {
+      "schema": "SiteSettings",
+      "description": "Global site settings document"
+    },
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Admin users collection"
+    }
+  }
+}
