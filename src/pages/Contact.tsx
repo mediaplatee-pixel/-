@@ -63,11 +63,11 @@ export default function Contact() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         const data = await response.json();
-        toast.error(data.error || '접수 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+        const errorMsg = data.error || data.message || '접수 중 오류가 발생했습니다.';
+        toast.error(errorMsg);
       }
     } catch (error) {
-      console.error('Submission error:', error);
-      toast.error('서버와의 통신에 실패했습니다.');
+      toast.error(`서버와의 통신에 실패했습니다. (사유: ${error instanceof Error ? error.message : '알 수 없는 오류'})`);
     } finally {
       setIsSubmitting(false);
     }

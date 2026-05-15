@@ -3,6 +3,7 @@ import path from "path";
 import { createServer as createViteServer } from "vite";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
+import cors from "cors";
 
 dotenv.config();
 
@@ -10,10 +11,28 @@ async function startServer() {
   const app = express();
   const PORT = 3000;
 
+  app.use(cors());
   app.use(express.json());
+
+  // Request Logging Middleware
+  app.use((req, res, next) => {
+    console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+    next();
+  });
+
+  // Health Check API
+  app.get("/api/health", (req, res) => {
+    res.json({ 
+      status: "ok", 
+      time: new Date().toISOString(),
+      env: process.env.NODE_ENV || "development",
+      mailConfigured: !!(process.env.SMTP_USER && process.env.SMTP_PASS)
+    });
+  });
 
   // API Route for Contact Form
   app.post("/api/contact", async (req, res) => {
+    console.log("Received contact form submission:", req.body.email);
     const { 
       name, company, phone, email, videoType, scope, length, 
       episodes, filming, schedule, deliveryDate, budget, references, details 
@@ -103,8 +122,13 @@ ${details}
       };
 
       if (process.env.SMTP_USER && process.env.SMTP_PASS) {
-        await transporter.sendMail(mailOptions);
-        res.status(200).json({ message: "Inquiry sent successfully" });
+        try {
+          await transporter.sendMail(mailOptions);
+          res.status(200).json({ message: "Inquiry sent successfully" });
+        } catch (mailError) {
+          console.error("Transporter sendMail error:", mailError);
+          res.status(500).json({ error: `이메일 전송 패스워드나 설정이 올바르지 않습니다: ${mailError instanceof Error ? mailError.message : 'Unknown error'}` });
+        }
       } else {
         console.log("SMTP credentials missing. Email content would be:");
         console.log(mailOptions.text);
