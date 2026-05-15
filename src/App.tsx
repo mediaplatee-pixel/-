@@ -7,6 +7,7 @@ import Contact from './pages/Contact';
 import Login from './pages/Login';
 import AdminDashboard from './pages/AdminDashboard';
 import Layout from './components/Layout';
+import ScrollToTop from './components/ScrollToTop';
 import { Toaster } from './components/ui/sonner';
 import { AuthProvider } from './lib/AuthContext';
 
@@ -14,6 +15,7 @@ export default function App() {
   return (
     <AuthProvider>
       <Router>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
