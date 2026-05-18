@@ -456,6 +456,122 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Work in Progress Section - Infinite Slider Flow */}
+      <section id="wip" className="py-32 relative overflow-hidden bg-black/40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 relative z-10 mb-16">
+          <div className="flex flex-col md:flex-row items-end justify-between gap-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-bold text-primary mb-4 uppercase tracking-widest">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                Live Production
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tighter">프로덕션 현장 스케치</h2>
+            </motion.div>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="text-muted-foreground max-w-sm md:text-right break-keep"
+            >
+              교육 영상 전문 제작진이 함께 <br /> 
+              더 좋은 결과물을 위해 매 과정 최선을 다해 제작합니다.
+            </motion.p>
+          </div>
+        </div>
+
+        {/* Infinite Marquee Section */}
+        <div className="relative flex overflow-hidden py-10 select-none">
+          {/* First Row Moving Right */}
+          <motion.div 
+            animate={{ x: [0, -1920] }}
+            transition={{ 
+              x: {
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 40,
+                ease: "linear",
+              }
+            }}
+            className="flex flex-nowrap shrink-0 gap-6"
+          >
+            {[
+              { src: "/src/assets/images/현장사진1.png", title: "프로페셔널 기획", scene: "SCENE 01" },
+              { src: "/src/assets/images/현장사진2.png", title: "최첨단 장비 운용", scene: "SCENE 02" },
+              { src: "/src/assets/images/현장사진3.png", title: "실시간 모니터링", scene: "SCENE 03" },
+              { src: "/src/assets/images/현장사진4.png", title: "시네마틱 라이팅", scene: "SCENE 04" },
+              { src: "/src/assets/images/현장사진5.png", title: "인터뷰 연출", scene: "SCENE 05" },
+              // Duplicate for seamless loop
+              { src: "/src/assets/images/현장사진1.png", title: "프로페셔널 기획", scene: "SCENE 01" },
+              { src: "/src/assets/images/현장사진2.png", title: "최첨단 장비 운용", scene: "SCENE 02" },
+              { src: "/src/assets/images/현장사진3.png", title: "실시간 모니터링", scene: "SCENE 03" },
+              { src: "/src/assets/images/현장사진4.png", title: "시네마틱 라이팅", scene: "SCENE 04" },
+              { src: "/src/assets/images/현장사진5.png", title: "인터뷰 연출", scene: "SCENE 05" },
+            ].map((img, i) => (
+              <div key={i} className="relative w-[300px] md:w-[450px] aspect-[3/2] rounded-3xl overflow-hidden group border border-white/5 shrink-0">
+                <img 
+                  src={img.src} 
+                  alt={img.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                  <span className="text-[10px] font-bold text-primary uppercase tracking-widest">{img.scene}</span>
+                  <div className="text-sm font-bold mt-1 text-white">{img.title}</div>
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Second Row Moving Left (Optional for more density) */}
+        <div className="relative flex overflow-hidden pb-20 select-none">
+          <motion.div 
+            animate={{ x: [-1920, 0] }}
+            transition={{ 
+              x: {
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 50,
+                ease: "linear",
+              }
+            }}
+            className="flex flex-nowrap shrink-0 gap-6"
+          >
+            {[
+              { src: "/src/assets/images/현장사진6.png", title: "정밀 컷편집", scene: "POST 01" },
+              { src: "/src/assets/images/현장사진7.png", title: "모션 그래픽", scene: "POST 02" },
+              { src: "/src/assets/images/현장사진8.png", title: "색보정 작업", scene: "POST 03" },
+              { src: "/src/assets/images/현장사진9.png", title: "최종 검수", scene: "POST 04" },
+              // Duplicate for seamless loop
+              { src: "/src/assets/images/현장사진6.png", title: "정밀 컷편집", scene: "POST 01" },
+              { src: "/src/assets/images/현장사진7.png", title: "모션 그래픽", scene: "POST 02" },
+              { src: "/src/assets/images/현장사진8.png", title: "색보정 작업", scene: "POST 03" },
+              { src: "/src/assets/images/현장사진9.png", title: "최종 검수", scene: "POST 04" },
+            ].map((img, i) => (
+              <div key={i} className="relative w-[250px] md:w-[350px] aspect-[3/2] rounded-[2rem] overflow-hidden group border border-white/5 shrink-0 opacity-60 hover:opacity-100 transition-opacity">
+                <img 
+                  src={img.src} 
+                  alt={img.title}
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform">
+                  <span className="text-[9px] font-bold text-primary uppercase">{img.scene}</span>
+                  <div className="text-xs font-bold mt-0.5 text-white">{img.title}</div>
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+
       {/* Why MediaPlate Section (Refined for Focus & Clarity) */}
       <section id="why-mediaplate" className="py-32 bg-[#050505] relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-primary/5 blur-[150px] rounded-full -z-0 pointer-events-none" />
@@ -649,24 +765,40 @@ export default function Home() {
           <div className="space-y-4">
             {[
               {
-                q: "원고나 PPT만 있어도 제작이 가능한가요?",
-                a: "네, 가능합니다. 보유하신 원고, PPT, 강의자료를 바탕으로 영상 구조를 설계하고 촬영 및 편집 방향을 제안드립니다."
+                q: "영상 제작이 처음인데 어떻게 진행하면 되나요?",
+                a: "영상의 목적, 희망 분량, 제작 일정, 보유 자료 정도만 알려주셔도 상담이 가능합니다. 전달주신 내용을 바탕으로 담당 PD가 제작 방향과 필요한 범위를 정리해드리고, 예산에 맞는 제작 방식을 제안드립니다."
               },
               {
-                q: "촬영 없이 편집만 의뢰할 수 있나요?",
-                a: "가능합니다. 촬영본, PPT, 스크립트, 참고 영상을 전달주시면 편집 범위에 맞춰 견적을 안내드립니다."
+                q: "아직 기획이 정리되지 않았는데, 기획도 해주시나요?",
+                a: "네, 가능합니다. 제작 목적과 활용 채널, 전달하고 싶은 핵심 내용만 알려주셔도 영상의 방향성을 함께 정리해드립니다. 필요에 따라 콘텐츠 구성, 대본 방향, 촬영 구성, 화면 연출 방식까지 제안드리며, 교육 영상의 경우 학습자가 이해하기 쉬운 흐름으로 기획을 도와드립니다."
               },
               {
-                q: "교수님 또는 강사님이 여러 명이어도 진행 가능한가요?",
-                a: "가능합니다. 출연자별 촬영 일정과 자료 검수 과정을 고려해 전체 제작 일정을 설계합니다."
+                q: "원고나 PPT만 있어도 영상 제작이 가능한가요?",
+                a: "네, 가능합니다. 원고, PPT, 교안, 스토리보드 등 기본 자료만 있어도 영상화가 가능하며, 필요에 따라 구성 정리, 화면 자료 삽입, 자막, 모션그래픽, 편집까지 함께 진행할 수 있습니다."
+              },
+              {
+                q: "촬영부터 편집까지 한 번에 진행할 수 있나요?",
+                a: "네, 가능합니다. 강의 영상, 인터뷰 영상, 교육 영상, 행사 영상 등 목적에 맞춰 촬영 기획부터 현장 촬영, 편집, 자막, 최종 납품까지 함께 진행합니다."
+              },
+              {
+                q: "출연자나 강사 섭외도 가능한가요?",
+                a: "네, 가능합니다. 프로젝트 성격에 따라 강사, 배우, 아나운서, 성우 등 필요한 출연자 섭외를 함께 도와드릴 수 있습니다. 섭외 범위와 비용은 출연자 유형, 촬영 일정, 활용 범위에 따라 별도 협의 후 안내드립니다."
+              },
+              {
+                q: "일반 영상 제작과 미디어플레이트의 교육 영상 제작은 어떤 점이 다른가요?",
+                a: "미디어플레이트는 단순히 보기 좋은 영상보다, 학습자가 내용을 쉽게 이해하고 끝까지 따라올 수 있는 교육 영상 제작을 중요하게 생각합니다. 강의 흐름, PPT 자료 구성, 자막 가독성, 핵심 내용 강조, 화면 전환 방식 등을 교육 콘텐츠에 맞게 설계하며, 대학교 이러닝, 공공기관 교육 영상, 기업 사내교육 영상 제작 경험을 바탕으로 안정적인 제작 프로세스를 제공합니다."
+              },
+              {
+                q: "제작 기간은 얼마나 걸리나요?",
+                a: "영상의 분량과 제작 방식에 따라 달라집니다. 단순 편집은 비교적 빠르게 진행 가능하며, 촬영과 디자인, 모션그래픽이 포함되는 경우에는 일정 협의 후 제작 기간을 안내드립니다."
               },
               {
                 q: "수정은 몇 회까지 가능한가요?",
-                a: "프로젝트 범위에 따라 다르지만, 일반적으로 1~2회 피드백 반영을 기준으로 진행합니다. 오탈자 및 오류 수정 기준은 별도 협의 가능합니다."
+                a: "기본 수정은 2회까지 무료로 진행됩니다. 또한 납품 후 발견되는 오탈자나 내용 오류에 대한 수정은 6개월간 무상으로 지원해드립니다. 다만, 최초 협의된 기획 방향이나 구성 자체가 크게 변경되는 경우에는 추가 비용이 발생할 수 있습니다."
               },
               {
                 q: "견적은 언제 받을 수 있나요?",
-                a: "평일 기준 문의 후 2시간 이내 담당자가 직접 확인 후 예상 견적과 제작 방향을 안내드립니다."
+                a: "문의 내용을 남겨주시면 최대한 빠르게 확인 후 견적을 안내드립니다. 제작 목적, 영상 분량, 촬영 여부, 납품 일정이 함께 전달되면 더 정확한 견적 확인이 가능합니다."
               }
             ].map((faq, idx) => (
               <FaqItem key={idx} question={faq.q} answer={faq.a} />
@@ -779,27 +911,6 @@ export default function Home() {
   );
 }
 
-function ProjectStatusItem({ name, status, progress }: { name: string, status: string, progress: number }) {
-  return (
-    <div className="bg-white/3 border border-white/5 rounded-xl p-4">
-      <div className="flex justify-between items-center mb-3">
-        <div>
-          <div className="text-xs font-bold mb-1">{name}</div>
-          <div className="text-[10px] text-primary">{status}</div>
-        </div>
-        <div className="text-[10px] font-mono">{progress}%</div>
-      </div>
-      <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
-        <motion.div 
-          initial={{ width: 0 }}
-          animate={{ width: `${progress}%` }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="h-full bg-primary" 
-        />
-      </div>
-    </div>
-  );
-}
 
 function ServiceCard({ icon, title, description, index }: { icon: React.ReactNode, title: string, description: string, index: number }) {
   return (
@@ -894,7 +1005,7 @@ function FaqItem({ question, answer }: { question: string, answer: string }) {
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            <div className="px-6 pb-6 text-muted-foreground leading-relaxed break-keep">
+            <div className="px-6 pb-6 text-white/70 text-lg leading-relaxed break-keep">
               {answer}
             </div>
           </motion.div>
