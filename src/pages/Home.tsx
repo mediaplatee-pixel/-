@@ -19,6 +19,15 @@ import {
   Minus,
   CheckCircle2
 } from 'lucide-react';
+import field1 from '@/assets/images/현장사진1.png';
+import field2 from '@/assets/images/현장사진2.png';
+import field3 from '@/assets/images/현장사진3.png';
+import field4 from '@/assets/images/현장사진4.png';
+import field5 from '@/assets/images/현장사진5.png';
+import field6 from '@/assets/images/현장사진6.png';
+import field7 from '@/assets/images/현장사진7.png';
+import field8 from '@/assets/images/현장사진8.png';
+import field9 from '@/assets/images/현장사진9.png';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
@@ -501,17 +510,17 @@ export default function Home() {
             className="flex flex-nowrap shrink-0 gap-6"
           >
             {[
-              { src: "/src/assets/images/현장사진1.png", title: "프로페셔널 기획", scene: "SCENE 01" },
-              { src: "/src/assets/images/현장사진2.png", title: "최첨단 장비 운용", scene: "SCENE 02" },
-              { src: "/src/assets/images/현장사진3.png", title: "실시간 모니터링", scene: "SCENE 03" },
-              { src: "/src/assets/images/현장사진4.png", title: "시네마틱 라이팅", scene: "SCENE 04" },
-              { src: "/src/assets/images/현장사진5.png", title: "인터뷰 연출", scene: "SCENE 05" },
+              { src: field1, title: "프로페셔널 기획", scene: "SCENE 01" },
+              { src: field2, title: "최첨단 장비 운용", scene: "SCENE 02" },
+              { src: field3, title: "실시간 모니터링", scene: "SCENE 03" },
+              { src: field4, title: "시네마틱 라이팅", scene: "SCENE 04" },
+              { src: field5, title: "인터뷰 연출", scene: "SCENE 05" },
               // Duplicate for seamless loop
-              { src: "/src/assets/images/현장사진1.png", title: "프로페셔널 기획", scene: "SCENE 01" },
-              { src: "/src/assets/images/현장사진2.png", title: "최첨단 장비 운용", scene: "SCENE 02" },
-              { src: "/src/assets/images/현장사진3.png", title: "실시간 모니터링", scene: "SCENE 03" },
-              { src: "/src/assets/images/현장사진4.png", title: "시네마틱 라이팅", scene: "SCENE 04" },
-              { src: "/src/assets/images/현장사진5.png", title: "인터뷰 연출", scene: "SCENE 05" },
+              { src: field1, title: "프로페셔널 기획", scene: "SCENE 01" },
+              { src: field2, title: "최첨단 장비 운용", scene: "SCENE 02" },
+              { src: field3, title: "실시간 모니터링", scene: "SCENE 03" },
+              { src: field4, title: "시네마틱 라이팅", scene: "SCENE 04" },
+              { src: field5, title: "인터뷰 연출", scene: "SCENE 05" },
             ].map((img, i) => (
               <div key={i} className="relative w-[300px] md:w-[450px] aspect-[3/2] rounded-3xl overflow-hidden group border border-white/5 shrink-0">
                 <img 
@@ -544,15 +553,15 @@ export default function Home() {
             className="flex flex-nowrap shrink-0 gap-6"
           >
             {[
-              { src: "/src/assets/images/현장사진6.png", title: "정밀 컷편집", scene: "POST 01" },
-              { src: "/src/assets/images/현장사진7.png", title: "모션 그래픽", scene: "POST 02" },
-              { src: "/src/assets/images/현장사진8.png", title: "색보정 작업", scene: "POST 03" },
-              { src: "/src/assets/images/현장사진9.png", title: "최종 검수", scene: "POST 04" },
+              { src: field6, title: "정밀 컷편집", scene: "POST 01" },
+              { src: field7, title: "모션 그래픽", scene: "POST 02" },
+              { src: field8, title: "색보정 작업", scene: "POST 03" },
+              { src: field9, title: "최종 검수", scene: "POST 04" },
               // Duplicate for seamless loop
-              { src: "/src/assets/images/현장사진6.png", title: "정밀 컷편집", scene: "POST 01" },
-              { src: "/src/assets/images/현장사진7.png", title: "모션 그래픽", scene: "POST 02" },
-              { src: "/src/assets/images/현장사진8.png", title: "색보정 작업", scene: "POST 03" },
-              { src: "/src/assets/images/현장사진9.png", title: "최종 검수", scene: "POST 04" },
+              { src: field6, title: "정밀 컷편집", scene: "POST 01" },
+              { src: field7, title: "모션 그래픽", scene: "POST 02" },
+              { src: field8, title: "색보정 작업", scene: "POST 03" },
+              { src: field9, title: "최종 검수", scene: "POST 04" },
             ].map((img, i) => (
               <div key={i} className="relative w-[250px] md:w-[350px] aspect-[3/2] rounded-[2rem] overflow-hidden group border border-white/5 shrink-0 opacity-60 hover:opacity-100 transition-opacity">
                 <img 
