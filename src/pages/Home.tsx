@@ -170,11 +170,11 @@ export default function Home() {
         </div>
 
         {/* Hero content */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 w-full relative z-10 text-left flex flex-col items-start">
-          <div className="flex flex-col items-start">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 w-full relative z-10 text-center flex flex-col items-center">
+          <div className="flex flex-col items-center">
             <motion.span 
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
               className="text-primary text-sm font-bold tracking-[0.4em] uppercase mb-8"
             >
@@ -185,7 +185,7 @@ export default function Home() {
               variants={containerVars}
               initial="hidden"
               animate="visible"
-              className="text-3xl sm:text-5xl md:text-7xl font-bold tracking-tighter leading-[1.2] md:leading-[1.3] mb-10 max-w-4xl flex flex-wrap justify-start gap-x-3 md:gap-x-4"
+              className="text-3xl sm:text-5xl md:text-7xl font-bold tracking-tighter leading-[1.2] md:leading-[1.3] mb-10 max-w-4xl flex flex-wrap justify-center gap-x-3 md:gap-x-4"
             >
               {titleWords.map((word, idx) => (
                 <motion.span key={idx} variants={childVars} className="inline-block">
@@ -207,7 +207,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2 }}
-              className="flex flex-col sm:flex-row gap-4 justify-start w-full sm:w-auto"
+              className="flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto"
             >
               <Link to="/contact" className="w-full sm:w-auto">
                 <Button size="lg" className="h-14 w-full sm:px-10 font-bold text-base rounded-sm text-black bg-primary hover:bg-primary/90">
@@ -660,11 +660,11 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-left mb-16 md:mb-24"
+            className="text-center mb-16 md:mb-24"
           >
             <Badge variant="outline" className="mb-4 border-primary/30 text-primary uppercase tracking-[0.2em] px-4 py-1.5 font-bold">Workflow</Badge>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4 md:mb-6">체계적인 제작 프로세스</h2>
-            <p className="text-muted-foreground max-w-2xl text-base md:text-lg leading-relaxed break-keep">
+            <p className="text-muted-foreground max-w-4xl mx-auto text-base md:text-lg leading-relaxed break-keep">
               복잡한 과정은 저희가 설계하겠습니다. 투명하고 효율적인 미디어플레이트만의 제작 시스템을 경험해보세요.
             </p>
           </motion.div>
@@ -822,15 +822,15 @@ export default function Home() {
         <div className="absolute inset-0 bg-primary/5 -z-10" />
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 text-left">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 text-center">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
             className="space-y-10"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border-white/10 text-xs font-bold tracking-widest text-primary uppercase">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border-white/10 text-xs font-bold tracking-widest text-primary uppercase mx-auto">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               Fast Response Guarantee
             </div>
@@ -840,11 +840,11 @@ export default function Home() {
               <span className="text-primary">함께 시작해볼까요?</span>
             </h2>
             
-            <p className="text-lg md:text-xl text-muted-foreground break-keep max-w-2xl">
+            <p className="text-lg md:text-xl text-muted-foreground break-keep max-w-2xl mx-auto">
               문의를 남겨주시면 <span className="text-white font-bold underline underline-offset-4 decoration-primary/50">평일 2시간 이내</span>로 전담 제작팀이 직접 연락드립니다.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-start justify-start gap-4 pt-6">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
               <a 
                 href="https://pf.kakao.com/_your_id" 
                 target="_blank" 
