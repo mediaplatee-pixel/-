@@ -170,11 +170,11 @@ export default function Home() {
         </div>
 
         {/* Hero content */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 w-full relative z-10 text-center flex flex-col items-center">
-          <div className="flex flex-col items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 w-full relative z-10 text-left flex flex-col items-start">
+          <div className="flex flex-col items-start">
             <motion.span 
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
               className="text-primary text-sm font-bold tracking-[0.4em] uppercase mb-8"
             >
@@ -185,7 +185,7 @@ export default function Home() {
               variants={containerVars}
               initial="hidden"
               animate="visible"
-              className="text-5xl md:text-7xl font-bold tracking-tighter leading-[1.3] mb-10 max-w-4xl flex flex-wrap justify-center gap-x-4"
+              className="text-3xl sm:text-5xl md:text-7xl font-bold tracking-tighter leading-[1.2] md:leading-[1.3] mb-10 max-w-4xl flex flex-wrap justify-start gap-x-3 md:gap-x-4"
             >
               {titleWords.map((word, idx) => (
                 <motion.span key={idx} variants={childVars} className="inline-block">
@@ -198,25 +198,24 @@ export default function Home() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1, duration: 1 }}
-              className="text-xl text-muted-foreground leading-relaxed max-w-3xl mb-14"
+              className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mb-14 break-keep"
             >
-              미디어플레이트는 대학교, 공공기관, 기업의 교육 콘텐츠와 정보전달 영상을 <br className="hidden md:block" />
-              기획부터 촬영, 편집, 디자인까지 원스톱으로 제작하는 영상 프로덕션입니다.
+              미디어플레이트는 대학교, 공공기관, 기업의 교육 콘텐츠와 정보전달 영상을 기획부터 촬영, 편집, 디자인까지 원스톱으로 제작하는 영상 프로덕션입니다.
             </motion.p>
 
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2 }}
-              className="flex flex-row flex-wrap gap-4 justify-center"
+              className="flex flex-col sm:flex-row gap-4 justify-start w-full sm:w-auto"
             >
-              <Link to="/contact">
-                <Button size="lg" className="h-12 md:h-14 px-6 md:px-10 font-bold text-sm md:text-base rounded-sm text-black bg-primary hover:bg-primary/90">
+              <Link to="/contact" className="w-full sm:w-auto">
+                <Button size="lg" className="h-14 w-full sm:px-10 font-bold text-base rounded-sm text-black bg-primary hover:bg-primary/90">
                   2시간 이내 견적 받아보기
                 </Button>
               </Link>
-              <Link to="/portfolio">
-                <Button size="lg" variant="outline" className="h-12 md:h-14 px-6 md:px-10 font-bold text-sm md:text-base rounded-sm glass border-white/10 hover:bg-white/5">
+              <Link to="/portfolio" className="w-full sm:w-auto">
+                <Button size="lg" variant="outline" className="h-14 w-full sm:px-10 font-bold text-base rounded-sm glass border-white/10 hover:bg-white/5">
                   포트폴리오 확인하기
                 </Button>
               </Link>
@@ -226,12 +225,14 @@ export default function Home() {
       </section>
 
       {/* Clients Section: Dynamic Text Rail */}
-      <section className="py-24 border-y border-white/5 bg-white/[0.01] relative overflow-hidden group">
-        <div className="flex flex-col gap-8 md:gap-12 relative">
-          {/* Edge Gradient Masks */}
-          <div className="absolute left-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-r from-[#000] to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-l from-[#000] to-transparent z-10 pointer-events-none" />
-
+      <section className="py-24 relative overflow-hidden">
+        <div 
+          className="flex flex-col gap-8 md:gap-12 relative"
+          style={{
+            maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+            WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)'
+          }}
+        >
           {/* Row 1: Forward Scroll */}
           <div className="flex overflow-hidden">
             <div className="marquee-rail">
@@ -279,12 +280,12 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="mb-24 text-center md:text-left"
+            className="mb-16 md:mb-24 text-left"
           >
             <Badge variant="outline" className="mb-6 border-primary/30 text-primary px-4 py-1.5 font-bold uppercase tracking-[0.2em]">Service Excellence</Badge>
             <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-6">제작 서비스</h2>
-            <p className="text-muted-foreground max-w-2xl text-lg leading-relaxed">
-              기획부터 촬영, 편집까지 모든 과정을 <br className="hidden md:block" />
+            <p className="text-muted-foreground max-w-2xl text-base md:text-lg leading-relaxed break-keep">
+              기획부터 촬영, 편집까지 모든 과정을
               압도적인 퀄리티로 완성하는 미디어플레이트의 핵심 서비스입니다.
             </p>
           </motion.div>
@@ -392,13 +393,13 @@ export default function Home() {
       {/* Featured Portfolio Section */}
       <section id="portfolio" className="py-32 bg-neutral-900/30 overflow-hidden relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
             <div>
               <Badge variant="outline" className="mb-4 border-primary/30 text-primary">PORTFOLIO</Badge>
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tighter">최근 프로젝트</h2>
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tighter">최근 프로젝트</h2>
             </div>
             <Link to="/portfolio">
-              <Button variant="ghost" className="text-muted-foreground hover:text-white group">
+              <Button variant="ghost" className="text-muted-foreground hover:text-white group p-0">
                 전체보기 <ArrowRight className="ml-2 transform group-hover:translate-x-1 transition-transform" size={18} />
               </Button>
             </Link>
@@ -467,28 +468,28 @@ export default function Home() {
 
       {/* Work in Progress Section - Infinite Slider Flow */}
       <section id="wip" className="py-32 relative overflow-hidden bg-black/40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 relative z-10 mb-16">
-          <div className="flex flex-col md:flex-row items-end justify-between gap-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 relative z-10 mb-12 md:mb-16">
+          <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-4 md:gap-6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-bold text-primary mb-4 uppercase tracking-widest">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-[10px] md:text-xs font-bold text-primary mb-3 md:mb-4 uppercase tracking-widest">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                 Live Production
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tighter">프로덕션 현장 스케치</h2>
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tighter">프로덕션 현장 스케치</h2>
             </motion.div>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
-              className="text-muted-foreground max-w-sm md:text-right break-keep"
+              className="text-muted-foreground max-w-sm text-sm md:text-base md:text-right break-keep"
             >
-              교육 영상 전문 제작진이 함께 <br /> 
+              교육 영상 전문 제작진이 함께 <br className="hidden md:block" /> 
               더 좋은 결과물을 위해 매 과정 최선을 다해 제작합니다.
             </motion.p>
           </div>
@@ -629,7 +630,7 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: i * 0.1 }}
                   viewport={{ once: true }}
-                  className="group p-10 rounded-3xl bg-white/[0.02] border border-white/5 hover:border-primary/30 transition-all duration-500"
+                  className="group p-6 md:p-10 rounded-3xl bg-white/[0.02] border border-white/5 hover:border-primary/30 transition-all duration-500"
                 >
                   <div className="flex items-center gap-4 mb-6">
                     <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
@@ -659,12 +660,12 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-24"
+            className="text-left mb-16 md:mb-24"
           >
             <Badge variant="outline" className="mb-4 border-primary/30 text-primary uppercase tracking-[0.2em] px-4 py-1.5 font-bold">Workflow</Badge>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">체계적인 제작 프로세스</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed break-keep">
-              복잡한 과정은 저희가 설계하겠습니다. <br className="hidden md:block" /> 투명하고 효율적인 미디어플레이트만의 제작 시스템을 경험해보세요.
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4 md:mb-6">체계적인 제작 프로세스</h2>
+            <p className="text-muted-foreground max-w-2xl text-base md:text-lg leading-relaxed break-keep">
+              복잡한 과정은 저희가 설계하겠습니다. 투명하고 효율적인 미디어플레이트만의 제작 시스템을 경험해보세요.
             </p>
           </motion.div>
 
@@ -762,11 +763,11 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-20"
+            className="text-left mb-16 md:mb-20"
           >
             <Badge variant="outline" className="mb-4 border-primary/30 text-primary">FAQ</Badge>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">자주 묻는 질문</h2>
-            <p className="text-muted-foreground text-lg leading-relaxed">
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-6">자주 묻는 질문</h2>
+            <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
               문의 전 자주 궁금해하시는 내용을 정리했습니다.
             </p>
           </motion.div>
@@ -821,10 +822,10 @@ export default function Home() {
         <div className="absolute inset-0 bg-primary/5 -z-10" />
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
         
-        <div className="max-w-4xl mx-auto px-4 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 text-left">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
             className="space-y-10"
@@ -834,16 +835,16 @@ export default function Home() {
               Fast Response Guarantee
             </div>
             
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter leading-[1.1]">
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter leading-[1.1] break-keep">
               지금 고민 중인 프로젝트,<br />
               <span className="text-primary">함께 시작해볼까요?</span>
             </h2>
             
-            <p className="text-xl text-muted-foreground">
+            <p className="text-lg md:text-xl text-muted-foreground break-keep max-w-2xl">
               문의를 남겨주시면 <span className="text-white font-bold underline underline-offset-4 decoration-primary/50">평일 2시간 이내</span>로 전담 제작팀이 직접 연락드립니다.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
+            <div className="flex flex-col sm:flex-row items-start justify-start gap-4 pt-6">
               <a 
                 href="https://pf.kakao.com/_your_id" 
                 target="_blank" 
@@ -900,17 +901,23 @@ export default function Home() {
               >
                 <X size={24} />
               </button>
-              <div className="w-full h-full rounded-[22px] overflow-hidden">
-                <iframe
-                  width="100%"
-                  height="100%"
-                  src={`https://www.youtube.com/embed/${selectedProject.videoUrl.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/)?.[1]}`}
-                  title={selectedProject.title}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  className="w-full h-full"
-                ></iframe>
+            <div className="w-full h-full rounded-[22px] overflow-hidden bg-black">
+                {selectedProject.videoUrl ? (
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src={`https://www.youtube.com/embed/${selectedProject.videoUrl.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/)?.[1]}`}
+                    title={selectedProject.title}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    className="w-full h-full"
+                  ></iframe>
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-white/20">
+                    <Video size={64} />
+                  </div>
+                )}
               </div>
             </motion.div>
           </motion.div>
@@ -998,7 +1005,7 @@ function FaqItem({ question, answer }: { question: string, answer: string }) {
         onClick={() => setIsOpen(!isOpen)}
         className="w-full p-6 flex items-center justify-between text-left group"
       >
-        <span className="text-lg font-bold tracking-tight pr-8">{question}</span>
+        <span className="text-base md:text-lg font-bold tracking-tight pr-8">{question}</span>
         <div className={cn(
           "w-8 h-8 rounded-full border border-white/10 flex items-center justify-center transition-all group-hover:border-primary/50 group-hover:text-primary shrink-0",
           isOpen && "bg-primary text-black border-primary"
@@ -1014,7 +1021,7 @@ function FaqItem({ question, answer }: { question: string, answer: string }) {
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            <div className="px-6 pb-6 text-white/70 text-lg leading-relaxed break-keep">
+            <div className="px-6 pb-6 text-white/70 text-base md:text-lg leading-relaxed break-keep">
               {answer}
             </div>
           </motion.div>

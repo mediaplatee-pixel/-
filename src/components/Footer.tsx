@@ -39,8 +39,8 @@ export default function Footer() {
               </div>
               <div className="flex flex-col gap-1">
                 <span className="text-white/40 text-xs font-mono uppercase">Call</span>
-                <a href="tel:010-6584-7718" className="hover:text-primary transition-colors font-medium">
-                  010-6584-7718
+                <a href="tel:010-3747-5089" className="hover:text-primary transition-colors font-medium">
+                  010-3747-5089
                 </a>
               </div>
               <div className="flex flex-col gap-1">
