@@ -497,18 +497,18 @@ export default function Home() {
 
         {/* Infinite Marquee Section */}
         <div className="relative flex overflow-hidden py-10 select-none">
-          {/* First Row Moving Right */}
+          {/* First Row Moving Left */}
           <motion.div 
-            animate={{ x: [0, -1920] }}
+            animate={{ x: ["0%", "-50%"] }}
             transition={{ 
               x: {
                 repeat: Infinity,
                 repeatType: "loop",
-                duration: 40,
+                duration: 35,
                 ease: "linear",
               }
             }}
-            className="flex flex-nowrap shrink-0 gap-6"
+            className="flex flex-nowrap shrink-0"
           >
             {[
               { src: field1, title: "프로페셔널 기획", scene: "SCENE 01" },
@@ -523,7 +523,7 @@ export default function Home() {
               { src: field4, title: "시네마틱 라이팅", scene: "SCENE 04" },
               { src: field5, title: "인터뷰 연출", scene: "SCENE 05" },
             ].map((img, i) => (
-              <div key={i} className="relative w-[300px] md:w-[450px] aspect-[3/2] rounded-3xl overflow-hidden group border border-white/5 shrink-0">
+              <div key={i} className="relative w-[300px] md:w-[450px] aspect-[3/2] rounded-3xl overflow-hidden group border border-white/5 shrink-0 mr-6">
                 <img 
                   src={img.src} 
                   alt={img.title}
@@ -539,32 +539,32 @@ export default function Home() {
           </motion.div>
         </div>
 
-        {/* Second Row Moving Left (Optional for more density) */}
+        {/* Second Row Moving Right */}
         <div className="relative flex overflow-hidden pb-20 select-none">
           <motion.div 
-            animate={{ x: [-1920, 0] }}
+            animate={{ x: ["-50%", "0%"] }}
             transition={{ 
               x: {
                 repeat: Infinity,
                 repeatType: "loop",
-                duration: 50,
+                duration: 40,
                 ease: "linear",
               }
             }}
-            className="flex flex-nowrap shrink-0 gap-6"
+            className="flex flex-nowrap shrink-0"
           >
             {[
-              { src: field6, title: "정밀 컷편집", scene: "POST 01" },
-              { src: field7, title: "모션 그래픽", scene: "POST 02" },
-              { src: field8, title: "색보정 작업", scene: "POST 03" },
-              { src: field9, title: "최종 검수", scene: "POST 04" },
+              { src: field6, title: "현장 리허설 진행", scene: "SCENE 06" },
+              { src: field7, title: "다이내믹 무빙캠 촬영", scene: "SCENE 07" },
+              { src: field8, title: "정교한 포커싱 제어", scene: "SCENE 08" },
+              { src: field9, title: "디렉터 실시간 피드백", scene: "SCENE 09" },
               // Duplicate for seamless loop
-              { src: field6, title: "정밀 컷편집", scene: "POST 01" },
-              { src: field7, title: "모션 그래픽", scene: "POST 02" },
-              { src: field8, title: "색보정 작업", scene: "POST 03" },
-              { src: field9, title: "최종 검수", scene: "POST 04" },
+              { src: field6, title: "현장 리허설 진행", scene: "SCENE 06" },
+              { src: field7, title: "다이내믹 무빙캠 촬영", scene: "SCENE 07" },
+              { src: field8, title: "정교한 포커싱 제어", scene: "SCENE 08" },
+              { src: field9, title: "디렉터 실시간 피드백", scene: "SCENE 09" },
             ].map((img, i) => (
-              <div key={i} className="relative w-[250px] md:w-[350px] aspect-[3/2] rounded-[2rem] overflow-hidden group border border-white/5 shrink-0 opacity-60 hover:opacity-100 transition-opacity">
+              <div key={i} className="relative w-[250px] md:w-[350px] aspect-[3/2] rounded-[2rem] overflow-hidden group border border-white/5 shrink-0 opacity-60 hover:opacity-100 transition-opacity mr-6">
                 <img 
                   src={img.src} 
                   alt={img.title}
